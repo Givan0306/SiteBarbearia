@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+    <head>
+        <meta charset="UFT-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0".
+        <title>Agendamento de Barbearia</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                width: 300px;
+            }
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            input[type="text"], input[type="datetime-local"], select {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: #28a745;
+                color: white
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #218838;
+            }
+
+        </style>            
+    </head>
+    <body>
+        <div class="container">
+            <h2>Agendamento de Barbearia</h2>
+            <form id="agendamentoForm">
+                <label for="nomeCliente">Nome do Cliente:</label>
+                <input type="text" id="nomeCliente" name="nomeCliente" required>
+
+                <label for="servico">Serviço:</label>
+                <select id="servico" name="servico" required>
+                    <option value="Corte de Cabelo">Corte de Cabelo</option>
+                    <option value="Corte de Barba">Corte de Barba</option>
+                    <option value="Corte de Cabelo e Barba">Corte de Cabelo e Barba</option>
+                </select>
+
+                <label for="barbeiro">Barbeiro:</label>
+                <select id="barbeiro" name="barbeiro" required>
+                    <option value="João">João</option>
+                    <option value="Maria">Maria</option>
+                    <option value="Pedro">Pedro</option>
+                </select>
+
+                <label for="dataHora">Data e Hora:</label>
+                <input type="datetime-local" id="dataHora" name="dataHora" required>
+
+                <button type="submit">Agendar</button>
+                </form>
+            </div>
+            
+            <script>
+                document.getElementById("agendamentoForm").addEventListener("submit", function(event) {
+                    event.preventDefault();
+
+                    const nomeCliente = document.getElementById("nomeCliente").value;
+                    const servico = document.getElementById("servico").value;
+                    const barbeiro = document.getElementById("barbeiro").value;
+                    const dataHora = document.getElementById("dataHora").value;
+
+                    const agendamento = {
+                        cliente: nomeCliente,
+                        servico: servico,
+                        barbeiro: barbeiro,
+                        dataHora: new Date(dataHora).toLocaleString(),
+                    };
+
+                    alert('Agendamento realizado com sucesso!\n\n\'+
+                        'Cliente:'+ agendamento.cliente + '\n' +
+                        'Serviço: '+ agendamento.servico + '\n' +
+                        'Barbeiro: ' + agendamento.barbeiro + '\n' +
+                        'Data e Hora: '+ agendamento.dataHora + '\n');
+                });
+            </script>
+    </body>
+</html>
